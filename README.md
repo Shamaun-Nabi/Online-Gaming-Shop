@@ -2,4 +2,4 @@
 Our first Official Django Project<br>
 
 ### Navigation Section
-![Shop Page-Home](https://user-images.githubusercontent.com/50420064/109504929-48e4ce80-7ac6-11eb-8600-6e965cbe2c12.jpg)
+![rsz_shop_page-home](https://user-images.githubusercontent.com/50420064/109506286-a9c0d680-7ac7-11eb-9d68-31e301224338.jpg)
