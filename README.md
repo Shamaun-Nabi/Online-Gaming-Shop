@@ -12,6 +12,7 @@ UI Design With  Adobe XD
 
 
 ### Reg Form
+![reg](https://user-images.githubusercontent.com/50420064/109515862-c4984880-7ad1-11eb-8ee9-3a5d425dc757.PNG)
 
 ### Navigation Section
 ![rsz_shop_page-home](https://user-images.githubusercontent.com/50420064/109506286-a9c0d680-7ac7-11eb-9d68-31e301224338.jpg)
