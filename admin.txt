@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 username : nabi
 password : nabi
+=======
+username : nero
+password : nero
+
+username : nabi
+password : nabi
+
+username : rifat
+password : rifat
+>>>>>>> 882d8782678625f5f8990197f61c3d570a592a29
 
