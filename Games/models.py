@@ -4,11 +4,9 @@ from django.db import models
 
 class Categories(models.Model):
     name = models.CharField(max_length=10)
-    id = models.IntegerField(primary_key=True)
 
 class Games(models.Model):
-    title = models.CharField(max_length=30)
-    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=30)
     year = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     publisher = models.CharField(max_length=30)
