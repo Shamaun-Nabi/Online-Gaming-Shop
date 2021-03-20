@@ -1,0 +1,49 @@
+{% load static %}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div style="height:450px;" class="carousel-item active">
+      <img  src="{% static 'assets/img/cyber.jpg' %}" class="d-block w-100" alt="...">
+      <div style=" margin-bottom:150px; background: rgba(0, 111, 76, 0.5);" class="carousel-caption d-none d-md-block">
+        <h1>Cyberpunk 2077</h1>
+        <p>Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.</p>
+     <a href="{% url 'store' %}" target="_blank" rel="noopener noreferrer">
+        <button class="btn btn-danger">Buy Now</button>
+     </a>
+      </div>
+    </div>
+
+    <div style="height:450px;" class="carousel-item">
+      <img src="{% static 'assets/img/pubg.jpg' %}" class="d-block w-100" alt="...">
+      <div style=" margin-bottom:150px; background: rgba(255, 0, 89, 0.5);" class="carousel-caption d-none d-md-block">
+        <h1>PUBG: NEW STATE</h1>
+        <p>With next-generation mobile graphics, PUBG: NEW STATE delivers the full battle royale experience straight into players' hands. ▶Realistic and Dynamic Gunplay. Enjoy realistic gunplay optimized for mobile gaming. Master different weapons and make each of them your own with weapon customization..</p>
+        <a href="{% url 'store' %}" target="_blank" rel="noopener noreferrer">
+        <button class="btn btn-success">Coming Soon..</button>
+     </a>
+      </div>
+    </div>
+    <div style="height:450px;" class="carousel-item">
+      <img src="{% static 'assets/img/gtav.jpg' %}" class="d-block w-100" alt="...">
+      <div style=" margin-bottom:150px; background: rgba(0, 0, 0, 0.8);" class="carousel-caption d-none d-md-block">
+        <h1>Grand Theft Auto V official website - Rockstar Games</h1>
+        <p>The Grand Theft Auto V: Premium Edition includes the complete GTAV story, Grand Theft Auto Online and all existing gameplay upgrades and content. You'll also get the Criminal Enterprise Starter Pack, the fastest way to jumpstart your criminal empire in GTA Online.</p>
+        <a href="{% url 'store' %}" target="_blank" rel="noopener noreferrer">
+        <button class="btn btn-info">Buy Now</button>
+     </a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

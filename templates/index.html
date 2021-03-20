@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>My web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Simple-Slider.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body style="color: var(--light);background:#060D13 ;font-family: Poppins, sans-serif;text-shadow: 0px 0px var(--teal);">
+  
+    <div style="background: #060D13;height: 46px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><i class="fa fa-facebook-official" data-bss-hover-animate="flash" style="margin-top: 15px;font-size: 20px;padding: 0px;padding-right: 20px;"></i><i class="fa fa-twitter" data-bss-hover-animate="flash" style="padding-right: 20px;margin-top: 15px;font-size: 20px;"></i><i class="fa fa-instagram" data-bss-hover-animate="flash" style="padding-right: 20px;margin-top: 15px;font-size: 20px;"></i><i class="fa fa-twitch" data-bss-hover-animate="flash" style="padding-right: 20px;margin-top: 15px;font-size: 20px;"></i></div>
+                <div class="col-md-4">
+                    <a class="text-decoration-none" href="{% url 'index' %}"><h1 class="display-1 text-warning " style="font-family: Aladin, cursive;font-size: 25px;text-align: center;filter: blur(NaNpx);margin-top: 14px;text-shadow: 2px 0px 6px var(--pink);color: var(--blue);">World Famous Games</h1></a>
+                </div>
+                <div class="col-md-4">
+                    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="color: var(--white);background: #060D13;">
+                        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                            <div class="collapse navbar-collapse" id="navcol-1">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a target="_blank" class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'signUp' %}" style="color: var(--white);font-family: Poppins, sans-serif;">sign up</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'contact' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Contact Us</a></li>
+                                    <li class="nav-item"><a target="_blank" class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'login' %}" style="color: var(--white);font-family: Poppins, sans-serif;">login<i class="fa fa-user" style="margin-left: 5px;"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="color: rgb(255,255,255);background: var(--white);">
+    <div style="background: #060D13;height: 80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><img class="d-inline-block float-left" data-bss-hover-animate="swing" src="{% static 'assets/img/tiktok_PNG8.png' %}" style="width: 50px;padding-right: 6px;">
+                    <a id="webName" class="text-decoration-none " href="{% url 'index' %}"><h1 data-bss-hover-animate="tada" style="font-family: Aladin, cursive;text-align: left;text-shadow: 3px 0px 7px var(--teal);padding: 0px;">WFG</h1></a>
+                </div>
+                <div class="col-md-4"><input class="form-control-lg float-left" type="search" placeholder="Search Product" style="margin-left: 30px;width: 276px;height: 39px;border-radius: 0px;border-top-left-radius: 16px;text-align: center;border-style: none;" autocomplete="off"><button class="btn btn-primary float-right" type="button" style="width: 43.2px;height: 40px;border-style: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;"><i class="fa fa-search" data-bss-hover-animate="swing" style="font-size: 20px;"></i></button></div>
+                <div class="col-md-4">
+                    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="color: var(--white);background: #060D13;padding: 5px;">
+                        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                            <div class="collapse navbar-collapse" id="navcol-1">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">store</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">CART</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">ORDERS</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+{% comment %} myCarousel {% endcomment %}
+<!-- Carousel wrapper -->
+
+
+
+{% block body %}
+
+
+{% include 'slider.html' %}
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+  <!-- Footer Area-->
+<footer class=" text-center text-white"style="background-color: rgba(0, 0, 0, 0.2);" >
+  <!-- Grid container -->
+  <div class="container p-4 pb-0" >
+    <!-- Section: Social media -->
+    <section class="mb-4"id="footerArea">
+      <!-- Facebook -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #3b5998;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #55acee;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #dd4b39;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #ac2bac;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #0082ca;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #333333;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.4);">
+    © 2021 Copyright:
+    <a class="text-white" href="#">Shamaun Nabi</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js?h=c554c7a64fbe0334027aa6c8a1be9dad"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="assets/js/Simple-Slider.js?h=df0233e38c69d965b7833f56606b8826"></script>
+</body>
+
+</html>
