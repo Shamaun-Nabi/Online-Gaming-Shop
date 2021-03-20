@@ -6,7 +6,6 @@ from Cart.models import Cart
 class Customer(models.Model):
     f_name = models.CharField(max_length=10)
     l_name = models.CharField(max_length=10)
-    id = models.IntegerField(primary_key=True)
     address_1 = models.TextField()
     address_2 = models.TextField()
     password = models.TextField()
