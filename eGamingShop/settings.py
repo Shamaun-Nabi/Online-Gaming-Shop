@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accessories',
     'Cart',
     'Payment',
+    'loginInfo',
 ]
 
 MIDDLEWARE = [
