@@ -3,19 +3,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Login Form Design | Code4Education</title>
+    <title>Login Here</title>
     <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
  </head>
   <body> 
     <div class="wrapper">
       <div class="title">Login To WFG</div>
-      <form action="#">
+      <form  action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+        <div class="">
+      <center> <small style="color:black;">{{error}}</small><center>
+        </div>
+      
         <div class="field">
-          <input type="text" required>
-          <label>User Name</label>
+       
+          <input name="email" type="text" required>
+          <label>Your Email</label>
         </div>
         <div class="field">
-          <input type="password" required>
+          <input name="password" type="password" required>
           <label>Password</label>
         </div>
         <div class="content">
@@ -28,7 +34,8 @@
         <div class="field">
           <input type="submit" value="Login">
         </div>
-        <div class="signup-link">Not a membat? <a href="{% url 'signUp' %}">Signup now</a></div>
+        <div class="signup-link">Not a member <a href="{% url 'signUp' %}">Signup now</a></div>
+         
       </form>
     </div>
 

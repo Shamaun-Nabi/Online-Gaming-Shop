@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 from loginInfo.models import Customer
+from django.contrib.auth.hashers import make_password,check_password
 
 # Create your views here.
 def index(request):
@@ -41,6 +42,7 @@ def signup(request):
       
         
         if not error_msg:
+            customer_Details.password=make_password(customer_Details.password)
             customer_Details.register()
             return redirect('index')
         else:
@@ -52,7 +54,27 @@ def signup(request):
     # return render(request,'signup.html')
 
 def loginPage(request):
-    return render(request,'login.html')
+    if request.method=="GET":
+        return render(request,'login.html')
+    else:
+        postData=request.POST
+        email=postData.get('email')
+        password=postData.get('password')
+        loginCustomer=Customer.get_customer_by_mail(email)
+        error_msg=None
+        if loginCustomer:
+            flag=check_password(password,loginCustomer.password)
+            if flag:
+                return redirect('index')
+            else:
+                error_msg="Email or Password Incorrect"
+            
+        else:
+            error_msg="Email or Password Incorrect"
+        print(email,password,loginCustomer)
+        
+    
+    return render(request,'login.html',{'error':error_msg})
 
 def contactPage(request):
     return render(request,'contact.html')
