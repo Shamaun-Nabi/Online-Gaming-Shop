@@ -25,14 +25,22 @@ def signup(request):
             'phone':phone,
         }
         # Validation
+        
+       
         error_msg=None
+        customer_Details=Customer(first_name=first_name,last_name=last_name,email=email,phone=phone,password=password,re_password=re_password)
         if password!=re_password:
             error_msg="Hey! Your Password Not Matched"
         elif len(phone)<11:
             error_msg="Hey Your Phone number must be 11 digit"
+        elif Customer.objects.filter(email=email).exists():
+            error_msg="This Email Has Been Already Registered"
+        
+        elif len(password)<8:
+            error_msg="Password must Be 8 character"
+      
         
         if not error_msg:
-            customer_Details=Customer(first_name=first_name,last_name=last_name,mail=email,phone=phone,password=password,re_password=re_password)
             customer_Details.register()
             return redirect('index')
         else:
