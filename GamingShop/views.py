@@ -5,6 +5,8 @@ from django.contrib.auth.hashers import make_password,check_password
 
 # Create your views here.
 def index(request):
+    
+    # print("You are "+request.session.get('email'))
     return render(request,'index.html')
 
 
@@ -44,7 +46,7 @@ def signup(request):
         if not error_msg:
             customer_Details.password=make_password(customer_Details.password)
             customer_Details.register()
-            return redirect('index')
+            return redirect('login')
         else:
             data={
                 "error":error_msg,
@@ -65,6 +67,8 @@ def loginPage(request):
         if loginCustomer:
             flag=check_password(password,loginCustomer.password)
             if flag:
+                request.session['customer_id']=loginCustomer.id
+                request.session['email']=loginCustomer.email
                 return redirect('index')
             else:
                 error_msg="Email or Password Incorrect"
@@ -85,3 +89,11 @@ def storePage(request):
 
 def productDetail(request):
     return render(request,'product_view.html')
+
+
+
+
+
+def logout(request):
+    request.session.clear()
+    return redirect('login')

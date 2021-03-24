@@ -27,28 +27,55 @@
                 <div class="col-md-4">
                     <a class="text-decoration-none" href="{% url 'index' %}"><h1 class="display-1 text-warning " style="font-family: Aladin, cursive;font-size: 25px;text-align: center;filter: blur(NaNpx);margin-top: 14px;text-shadow: 2px 0px 6px var(--pink);color: var(--blue);">World Famous Games</h1></a>
                 </div>
+                {% comment %} world {% endcomment %}
                 <div class="col-md-4">
                     <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="color: var(--white);background: #060D13;">
-                        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                            <div class="collapse navbar-collapse" id="navcol-1">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"><a target="_blank" class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'signUp' %}" style="color: var(--white);font-family: Poppins, sans-serif;">sign up</a></li>
-                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'contact' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Contact Us</a></li>
-                                    <li class="nav-item"><a target="_blank" class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'login' %}" style="color: var(--white);font-family: Poppins, sans-serif;">login<i class="fa fa-user" style="margin-left: 5px;"></i></a></li>
-                                </ul>
-                            </div>
+                         <nav class="navbar navbar-expand-lg navbar-light ">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a style="color: var(--white);" class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      
+      
+      {% if request.session.customer_id %}
+      <li class="nav-item dropdown">
+        <a style="color: var(--white);" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        </div>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a style="color: var(--white);" class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item ">
+        <a style="color: var(--white);" class="nav-link" href="{% url 'signUp' %}">Sign Up <span class="sr-only">(current)</span></a>
+      </li>
+      {% endif %}
+                         </ul>
                         </div>
                     </nav>
                 </div>
-            </div>
-        </div>
+             </div>
+        </nav>
+     </div>            
+</div>
+</div>
     </div>
     <hr style="color: rgb(255,255,255);background: var(--white);">
     <div style="background: #060D13;height: 80px;">
         <div class="container">
             <div class="row">
-                <div class="col-md-4"><img class="d-inline-block float-left" data-bss-hover-animate="swing" src="{% static 'assets/img/tiktok_PNG8.png' %}" style="width: 50px;padding-right: 6px;">
-                    <a id="webName" class="text-decoration-none " href="{% url 'index' %}"><h1 data-bss-hover-animate="tada" style="font-family: Aladin, cursive;text-align: left;text-shadow: 3px 0px 7px var(--teal);padding: 0px;">WFG</h1></a>
+                <div class="col-md-4"><img class="d-inline-block float-left" data-bss-hover-animate="swing" src="{% static 'assets/img/logo.png' %}" style="width: 60px;padding: 4px;">
+                    <a id="webName" class="text-decoration-none " href="{% url 'index' %}"><h1 data-bss-hover-animate="tada" style=" color:white;font-family: Aladin, cursive;text-align: left;text-shadow: 3px 0px 7px var(--teal);margin-top:10px;">WFG</h1></a>
                 </div>
                 <div class="col-md-4"><input class="form-control-lg float-left" type="search" placeholder="Search Product" style="margin-left: 30px;width: 276px;height: 39px;border-radius: 0px;border-top-left-radius: 16px;text-align: center;border-style: none;" autocomplete="off"><button class="btn btn-primary float-right" type="button" style="width: 43.2px;height: 40px;border-style: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;"><i class="fa fa-search" data-bss-hover-animate="swing" style="font-size: 20px;"></i></button></div>
                 <div class="col-md-4">
@@ -56,9 +83,10 @@
                         <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                             <div class="collapse navbar-collapse" id="navcol-1">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">store</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Store</a></li>
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">CART</a></li>
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">ORDERS</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'contact' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Contact</a></li>
                                     
                                 </ul>
                             </div>
@@ -152,9 +180,9 @@
   <!-- Grid container -->
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.4);">
+  <div  class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.4);">
     © 2021 Copyright:
-    <a class="text-white" href="#">Shamaun Nabi</a>
+    <a id="footerArea" class="text-white" href="#">Shamaun Nabi</a>
   </div>
   <!-- Copyright -->
 </footer>
@@ -164,9 +192,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bs-init.js?h=c554c7a64fbe0334027aa6c8a1be9dad"></script>
+    {% comment %} <script src="assets/js/bs-init.js?h=c554c7a64fbe0334027aa6c8a1be9dad"></script> {% endcomment %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="assets/js/Simple-Slider.js?h=df0233e38c69d965b7833f56606b8826"></script>
+    {% comment %} <script src="assets/js/Simple-Slider.js"></script> {% endcomment %}
 </body>
 
 </html>
