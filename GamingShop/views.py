@@ -29,7 +29,6 @@ def signup(request):
         }
         # Validation
         
-       
         error_msg=None
         customer_Details=Customer(first_name=first_name,last_name=last_name,email=email,phone=phone,password=password,re_password=re_password)
         if password!=re_password:
@@ -42,7 +41,6 @@ def signup(request):
         elif len(password)<8:
             error_msg="Password must Be 8 character"
       
-        
         if not error_msg:
             customer_Details.password=make_password(customer_Details.password)
             customer_Details.register()
@@ -89,10 +87,6 @@ def storePage(request):
 
 def productDetail(request):
     return render(request,'product_view.html')
-
-
-
-
 
 def logout(request):
     request.session.clear()

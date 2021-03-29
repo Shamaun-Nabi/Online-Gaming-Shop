@@ -20,7 +20,7 @@
                 <div class="col-md-6">
                     <div class="myLeftCtn">
                         <form class="myForm text-center" action="{% url 'signUp' %}" method='POST'>
-                        {% csrf_token %}
+                           {% csrf_token %}
                             <header>Create new account</header>
                              {% if error %}
                                 <h6 style="color:red;">{{error}}</h6>
