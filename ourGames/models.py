@@ -18,6 +18,10 @@ class Game(models.Model):
     platform = models.CharField(max_length=10)
     image=models.ImageField(upload_to='Product_img/images')
     # categories = models.ForeignKey(Categories, null=True, on_delete=models.SET_NULL)
+    @staticmethod
+    def getAllProducts():
+        return Game.objects.all()
+    
     
     def __str__(self):
         return self.name

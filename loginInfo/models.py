@@ -16,7 +16,9 @@ class Customer(models.Model):
         except:
             return False
         
-    
+    @staticmethod
+    def customerInfo():
+        return Customer.objects.all()
     
     def register(self):
         self.save()

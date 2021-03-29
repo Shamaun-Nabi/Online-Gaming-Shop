@@ -1,0 +1,51 @@
+{% load static %}
+<div class="container " >
+ <h1 class=" text-center mt-4">Explore Our Shop</h1>
+    <div class="row g-2 height d-flex justify-content-center align-items-center mt-3" id='services'>
+        <div class="col-md-6">
+            <div class="text-center">
+                <h4 class="text-uppercase">Our Top Game</h4>
+                <h3 class="text-uppercase">Assassin's Creed </h3>
+                <div class="buttons justify-content-center mt-3"><button class="btn btn-primary app-button"><i class="fa fa-shopping-bag fa-1x"></i><span class="text-uppercase ml-2">Shop Now</span></button> </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center"> <img src="{% static 'assets/img/a.png' %}" width="160px"> </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+.height {
+    height: 40vh
+}
+
+.app-button {
+    width: 180px;
+    height: 40px;
+    border-radius: 10px
+}
+
+.app-button span {
+    font-size: 14px
+}
+
+.buttons {
+    display: grid
+}
+#services{
+background-color: rgba(0, 0, 0, 0.5);
+background: rgba(0, 0, 0, 0.5);
+}
+body{
+    color:white;
+}
+
+
+</style>
+

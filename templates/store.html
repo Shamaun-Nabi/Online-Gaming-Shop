@@ -1,123 +1,55 @@
-{% comment %} {% extends 'index.html' %}
+{% extends 'index.html' %}
 
 {% block body %}
 {% load static %}
+<div class="container">
+<div class="row">
+{% for products in allProducts %}
+<div class="card p-4 m-2 mx-auto" style="width: 30rem;">
+  <img class="card-img-top" src= " {{products.image.url}}" alt="Card image cap" style="height:300px">
+  <div class="card-body">
+  <h5 class="card-cat">{{products.category.name}} </h5>
+    <h5 class="card-title">{{products.name}}</h5>
+    <p id='price' class="card-text">{{products.price}}  <span>tk</span></p>
+   
+    <a href="#" class="btn btn-primary">Add To Cart</a>
+    
+    
+  </div>
+</div>
 
-<div class="container-fluid px-sm-1 py-5 mx-auto">
-    <div  class="row justify-content-center">
-    {{allProduct}}
-        <div class="d-flex">
-            <div  class="card card-1">
-                <div class="pr- row justify-content-end">
-                    <div class="fa fa-heart-o like"></div>
-                </div>
-                <a href="{% url 'productDetails' %}"  rel="noopener noreferrer" class="text-decoration-none">
-                    <div id="box"  class="product-pic"> <img class="pic1" src="{% static 'assets/img/assa.jpg' %}"> </div> <small class="category">Action</small>
-                </a>
-                
-                <h5 class="product-name text-dark">Assassin's creed valhalla</h5>
-                <div class="row px-3 justify-content-between">
-                    <p class="price text-primary">৳2000.<span class="sm-text">00</span></p>
-                    <button class="btn btn-info">Add To Cart</button>
-                    <div class="stars"> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star-o"></span> <span class="fa fa-star-o"></span> </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% endfor %}
+</div>
 </div>
 
 
 
 
+
 <style>
-body {
-    background-color: #6200EA;
-    color: #000;
-    overflow-x: hidden
+.card-title{
+color:black;
 }
 
-.card {
-    margin: auto;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 50px;
-    margin-bottom: 50px
+.card-cat{
+    color:gray;
 }
 
-.like {
-    color: #757575;
-    font-weight: bold;
-    background-color: #EEEEEE;
-    padding: 7px;
-    border-radius: 50%
+#price{
+    color:black;
 }
 
-.like-checked {
-    color: #E53935
+.card{
+    border-radius:20px;
 }
 
-.like:hover {
-    color: #E53935;
-    cursor: pointer
+.card-img-top{
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.27);
+border-radius:20px;
 }
-
-.pic1 {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block
 }
-
-.product-pic {
-    padding-left: auto;
-    padding-right: auto;
-    width: 100%
-}
-
-.card-1 {
-    padding: 30px 30px 20px 30px !important;
-    border: none;
-    width: 375px
-}
-
-.category {
-    padding-top: 25px;
-    color: grey
-}
-
-.product-name {
-    padding-bottom: 15px;
-    font-family: Florence;
-    font-weight: bold
-}
-
-.price {
-    font-size: 18px
-}
-
-.sm-text {
-    font-size: 14px
-}
-
-.fa-star {
-    color: #FF6F00;
-    cursor: pointer
-}
-
-.fa-star-o {
-    color: #FF6F00;
-    cursor: pointer
-}
-
-#box:hover{
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  animation-name: example;
-  animation-duration: 0.25s;
-  border-left: 8px solid red;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
 
 </style>
-{% endblock body %} {% endcomment %}
+{% endblock body %}

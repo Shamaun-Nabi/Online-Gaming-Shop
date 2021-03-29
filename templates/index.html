@@ -48,8 +48,10 @@
         <a style="color: var(--white);" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Profile
         </a>
+   
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        <a class="dropdown-item" href="{% url 'profile' %}">Your Profile</a>
+        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
         </div>
       </li>
       {% else %}
@@ -83,7 +85,17 @@
                         <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                             <div class="collapse navbar-collapse" id="navcol-1">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Store</a></li>
+                                    <li class="nav-item dropdown">
+                                      <a style="color: var(--white);" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        STORE
+                                      </a>
+   
+                                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                      <a class="dropdown-item" href="{% url 'store' %}">Games</a>
+                                      <a class="dropdown-item" href="{% url 'logout' %}">Gaming Accessories</a>
+                                        </div>
+                                        </li>
+                                    {% comment %} <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Store</a></li> {% endcomment %}
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">CART</a></li>
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">ORDERS</a></li>
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'contact' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Contact</a></li>
@@ -104,8 +116,8 @@
 
 {% block body %}
 
-
 {% include 'slider.html' %}
+{% include 'downloadapp.html' %}
 
 {% endblock body %}
 
