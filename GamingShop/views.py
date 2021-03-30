@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 from loginInfo.models import Customer
-from ourGames.models import Game
+from ourGames.models import Game,Category
 from django.contrib.auth.hashers import make_password,check_password
 
 # Create your views here.
@@ -83,9 +83,19 @@ def contactPage(request):
     return render(request,'contact.html')
 
 def storePage(request):
-    product=Game.getAllProducts()
-    # print(product)
-    return render(request,'store.html',{'allProducts':product})
+    postdata=request.GET
+    product= Game.getAllProducts()
+    category=Category.category()
+    categoryId=postdata.get('category')
+    print(categoryId)
+    if categoryId:
+        product= Game.get_product_by_id(categoryId)
+    else:
+        product= Game.getAllProducts()
+    all_data={}
+    all_data['allProducts']=product
+    all_data['category']=category
+    return render(request,'store.html',all_data)
 
 
 def productDetail(request):
@@ -93,8 +103,8 @@ def productDetail(request):
 
 def userProfile(request):
     customerInfo=Customer.customerInfo()
+ 
     print(customerInfo)
-    
     return render(request,'profile.html',{'customer':customerInfo})
 
 def logout(request):

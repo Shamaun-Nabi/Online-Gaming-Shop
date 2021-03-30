@@ -8,6 +8,7 @@ class Customer(models.Model):
     phone=models.CharField(max_length=12)
     password=models.CharField(max_length=500)
     re_password=models.CharField(max_length=500)
+    image=models.ImageField(upload_to='Product_img/images',default='default.png')
     
     @staticmethod
     def get_customer_by_mail(email):

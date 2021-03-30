@@ -7,6 +7,10 @@ class Category(models.Model):
     
     def __str__(self):
         return self.name
+    @staticmethod
+    def category():
+        return Category.objects.all()
+        
 
 class Game(models.Model):
     name = models.CharField(max_length=30)
@@ -21,6 +25,15 @@ class Game(models.Model):
     @staticmethod
     def getAllProducts():
         return Game.objects.all()
+    
+    
+    @staticmethod
+    
+    def get_product_by_id(category_id):
+        if category_id:
+            return Game.objects.filter(category=category_id)
+        else:
+            Game.getAllProducts()
     
     
     def __str__(self):
