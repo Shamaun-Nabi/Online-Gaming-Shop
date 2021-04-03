@@ -1,10 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+from ourGames.models import Game
 
 # Create your models here.
 
-class Cart(models.Model):
-    id = models.IntegerField(primary_key=True)
-    item_id = models.IntegerField()
-    item_price = models.DecimalField(max_digits=5, decimal_places=2)
-    item_quantity = models.IntegerField()
-    total_cost = models.DecimalField(max_digits=6, decimal_places=2)
+class ShopCart(models.Model):
+    games=models.ForeignKey(Game,on_delete=models.CASCADE,null=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    quantity=models.IntegerField()
+    
+    def __str__(self):
+        return self.games.name
+

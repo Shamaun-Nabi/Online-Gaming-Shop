@@ -1,15 +1,18 @@
 {% extends 'index.html' %}
 
+
 {% block body %}
+{% comment %} {% load cart %} {% endcomment %}
 {% load static %}
 <div class="container">
 
 <div class="row">
-<div class="dropdown col-sm-2">
+<div class="dropdown col-sm-2 mt-4">
   <button class="btn btn-success text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Game Categories
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <a  class="dropdown-item" href="/store">ALL</a>
   {% for data in category %}
     <a  class="dropdown-item" href="?category={{data.id}}">{{data.name}}</a>
     {% endfor %}
@@ -26,8 +29,14 @@
   <h5 class="card-cat">{{products.category.name}} </h5>
     <h5 class="card-title">{{products.name}}</h5>
     <p id='price' class="card-text">{{products.price}}  <span>tk</span></p>
+        
    
-    <a href="#" class="btn btn-primary">Add To Cart</a>
+    <form action="" method="POST">
+    <input hidden type="text" name="addCart"  value="{{products.id}}">
+    <input type="submit" class="btn btn-primary" value="Add to Cart" >
+    {% comment %} <button type="submit" >Add to Cart</button> {% endcomment %}
+    {% csrf_token %}
+    </form>
     
     
   </div>

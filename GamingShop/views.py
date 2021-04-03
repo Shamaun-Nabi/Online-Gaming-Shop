@@ -3,9 +3,12 @@ from django.shortcuts import HttpResponse
 from loginInfo.models import Customer
 from ourGames.models import Game,Category
 from django.contrib.auth.hashers import make_password,check_password
+from django.contrib.auth.models import User
+from django.views import View
 
 # Create your views here.
 def index(request):
+    currentUser=request.user
     
     # print("You are "+request.session.get('email'))
     return render(request,'index.html')
@@ -44,6 +47,8 @@ def signup(request):
       
         if not error_msg:
             customer_Details.password=make_password(customer_Details.password)
+            a = User.objects.create_user(username=first_name,first_name=first_name,last_name=last_name, email=email,password=password)
+            a.save()
             customer_Details.register()
             return redirect('login')
         else:
@@ -54,19 +59,23 @@ def signup(request):
             return render(request,'signup.html',data)
     # return render(request,'signup.html')
 
-def loginPage(request):
-    if request.method=="GET":
+class LoginPage(View):
+    def get(self,request):
         return render(request,'login.html')
-    else:
+    
+    def post(self,request):
         postData=request.POST
         email=postData.get('email')
         password=postData.get('password')
         loginCustomer=Customer.get_customer_by_mail(email)
+       
         error_msg=None
         if loginCustomer:
             flag=check_password(password,loginCustomer.password)
             if flag:
                 request.session['customer_id']=loginCustomer.id
+                a=request.session['customer_name']=loginCustomer.first_name
+                print(a)
                 request.session['email']=loginCustomer.email
                 return redirect('index')
             else:
@@ -74,10 +83,38 @@ def loginPage(request):
             
         else:
             error_msg="Email or Password Incorrect"
-        print(email,password,loginCustomer)
+            print(email,password,loginCustomer)
+            return render(request,'login.html',{'error':error_msg})
+
+
+# def loginPage(request):
+#     if request.method=="GET":
+        # return render(request,'login.html')
+    # else:
+    #     postData=request.POST
+    #     email=postData.get('email')
+    #     password=postData.get('password')
+    #     loginCustomer=Customer.get_customer_by_mail(email)
+       
+      
+    #     error_msg=None
+    #     if loginCustomer:
+    #         flag=check_password(password,loginCustomer.password)
+    #         if flag:
+    #             request.session['customer_id']=loginCustomer.id
+    #             a=request.session['customer_name']=loginCustomer.first_name
+    #             print(a)
+    #             request.session['email']=loginCustomer.email
+    #             return redirect('index')
+    #         else:
+    #             error_msg="Email or Password Incorrect"
+            
+    #     else:
+    #         error_msg="Email or Password Incorrect"
+    #     print(email,password,loginCustomer)
         
     
-    return render(request,'login.html',{'error':error_msg})
+    # return render(request,'login.html',{'error':error_msg})
 
 def contactPage(request):
     return render(request,'contact.html')
@@ -87,7 +124,19 @@ def storePage(request):
     product= Game.getAllProducts()
     category=Category.category()
     categoryId=postdata.get('category')
-    print(categoryId)
+    cart=request.POST.get('addCart')
+    cart_add=request.session.get('cart_add')
+    if cart_add:
+        quantity=cart_add.get(cart)
+        if quantity:
+            cart_add[cart]=quantity+1
+        else:
+            cart_add[cart]=1
+    else:
+        cart_add={}
+        cart_add[cart]=1
+    request.session['cart_add']=cart_add
+    print(request.session['cart_add'])
     if categoryId:
         product= Game.get_product_by_id(categoryId)
     else:

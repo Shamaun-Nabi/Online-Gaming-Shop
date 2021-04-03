@@ -28,7 +28,11 @@ class Game(models.Model):
     
     
     @staticmethod
+    def get_products_by_id(ids):
+        return Product.objects.filter(id__in =ids)
+
     
+    @staticmethod
     def get_product_by_id(category_id):
         if category_id:
             return Game.objects.filter(category=category_id)
