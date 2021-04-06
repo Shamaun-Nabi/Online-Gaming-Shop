@@ -41,8 +41,6 @@
         <a style="color: var(--white);" class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
       </li>
       
-      
-      
       {% if request.session.customer_id %}
       <li class="nav-item dropdown">
         <a style="color: var(--white);" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +48,7 @@
         </a>
    
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="{% url 'profile' %}">Your Profile</a>
+        <a class="dropdown-item" href="{% url 'showProfile' %}">Your Profile</a>
         <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
         </div>
       </li>
@@ -96,8 +94,8 @@
                                         </div>
                                         </li>
                                     {% comment %} <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'store' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Store</a></li> {% endcomment %}
-                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">CART</a></li>
-                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="#" style="color: var(--white);font-family: Poppins, sans-serif;">ORDERS</a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'cart' %}" style="color: var(--white);font-family: Poppins, sans-serif;">CART <span class="badge badge-info mx-auto" style="font-size:7px;">{{request.session.cart_add.keys|length}}</span> </a></li>
+                                    <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'order' %}" style="color: var(--white);font-family: Poppins, sans-serif;">ORDERS</a></li>
                                     <li class="nav-item"><a class="nav-link text-uppercase" data-bss-hover-animate="pulse" href="{% url 'contact' %}" style="color: var(--white);font-family: Poppins, sans-serif;">Contact</a></li>
                                     
                                 </ul>

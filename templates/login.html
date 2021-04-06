@@ -10,7 +10,7 @@
     <div class="wrapper">
       <div class="title">Login To WFG</div>
       <form  action="{% url 'login' %}" method="POST">
-      {% csrf_token %}
+       {% csrf_token %}
         <div class="">
       <center> <small style="color:black;">{{error}}</small><center>
         </div>

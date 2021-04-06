@@ -8,10 +8,8 @@
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          <img src="" class="avatar img-circle" alt="avatar">
+          <img style="height:80px;width:80px;" src="{{pic.url}}" class="avatar img-circle" alt="avatar">
           <h6>Upload a different photo...</h6>
-          {{customer.image.url}}
-          
           <input type="file" class="form-control">
         </div>
       </div>
@@ -23,36 +21,33 @@
           <i class="fa fa-coffee"></i>
          You Can<strong> Edit</strong> Your Profile Here
         </div>
-        <h3>Personal info</h3>
+        <h3>Your Personal info</h3>
         
-        <form class="form-horizontal" role="form">
+        <form action="{% url 'showProfile' %}" class="form-horizontal" role="form" method="POST">
+        {% csrf_token %}
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="dey-dey">
+              <input name="fname" class="form-control" type="text" value="{{fname}}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="bootdey">
+              <input name="lname" class="form-control" type="text" value="{{lname}}">
             </div>
           </div>
+         
           <div class="form-group">
-            <label class="col-lg-3 control-label">Phone:</label>
+            <label class="col-lg-3 control-label">Add Phone:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value="janesemail@gmail.com">
+              <input name="email" class="form-control" type="text" value="Add Your Phone Number">
             </div>
           </div>
           <div class="form-group">
             <div class="col-lg-8">
-            <button class="btn btn-primary">Update Your Profile</button>
+            {% comment %} <button class="btn btn-primary">Update Your Profile</button> {% endcomment %}
+            <input type="submit"class="btn btn-primary"value="Update Profile">
             </div>
           </div>
       

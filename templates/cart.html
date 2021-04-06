@@ -1,0 +1,101 @@
+{% extends 'index.html' %}
+
+{% block body %}
+{% load cart %}
+<div class="container">
+<center><h2>Your Cart</h2></center>
+<table class="table table-borderless rounded-0 table-light">
+  <thead >
+    <tr class="table-primary">
+      <th scope="col">Product</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for game in games  %}
+    <tr>
+      <th scope="row"><img class="" style="width:70px;" src="{{game.image.url}}" alt="" srcset=""></th>
+      <td>{{game.name}}</td>
+      <td>{{game|cart_quantity:request.session.cart_add}}</td>
+      <td>{{game|price_total:request.session.cart_add}} {{game|custom_sign:request.session.cart_add}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+  <table class="table table-borderless rounded-0 table-warning">
+  <thead class="thead-primary">
+
+    <tr >
+      <th scope="col"></th>
+      
+      <th scope="col"class="text-center">Total Price : {{games|total_cart_price:request.session.cart_add}} <span>৳</span></th>   
+      <th scope="col-2" class="text-center"></th>
+    </tr>
+  </thead>
+</table>
+<hr>
+  <div class="mb-5 pt-2">
+<a href="" class="btn btn-primary text-light btn-outline-dark border-rounded float-right" data-toggle="modal" data-target="#modalAbandonedCart">Check-Out</a>
+
+</div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+<!-- Modal: modalAbandonedCart-->
+<div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading text-dark">PLease Fill The Informattion Bellow
+        </p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-3">
+            <p></p>
+            <p class="text-center text-primary"><i class="fa fa-shopping-cart fa-4x"></i></p>
+          </div>
+
+          <div class="col-9">
+           <form action="{% url 'check-out' %}" method="POST"  class="form-group" >
+           {% csrf_token %}
+           <label class="text-dark" >Address :</label>
+           <input class="form-control " placeholder="Enter Address" type="text" name="address">
+           <label class="text-dark">Phone :</label>
+           <input class="form-control " placeholder="Enter Phone Number" type="number" name="Phone">
+             <!--Footer-->
+      <div class="modal-footer justify-content-center">
+         <input type="submit" class="btn btn-primary" value="Confirm Order">
+          </form>
+        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+    <!--/.Content-->
+          
+          </div>
+        </div>
+      </div>
+
+    
+  </div>
+</div>
+<!-- Modal: modalAbandonedCart-->
+
+
+{% endblock body %}

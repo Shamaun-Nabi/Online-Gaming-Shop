@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="myLeftCtn">
-                        <form class="myForm text-center" action="{% url 'signUp' %}" method='POST' enctype="multipart/form-data">
+                        <form class="myForm text-center" action="{% url 'signUp' %}" method='POST'>
                            {% csrf_token %}
                             <header>Create new account</header>
                              {% if error %}
@@ -39,7 +39,12 @@
                                 <i class="fas fa-envelope"></i>
                                 <input class="myInput" value="{{info.email}}" name="email" placeholder="Email" type="text" id="email" required>
                             </div>
-       
+                            <div class="form-group">
+                                <i class="fas fa-mobile"></i>
+                                <input class="myInput"value="{{info.phone}}" name="phone" placeholder="Phone" type="text" id="email" required>
+                            </div>
+                            
+
                             <div class="form-group">
                                 <i class="fas fa-lock"></i>
                                 <input class="myInput" name="password" type="password" id="password" placeholder="Password" required>
@@ -50,7 +55,7 @@
                             </div>
                              <div class="form-group">
                                 
-                               <input class="myInput" type="file" name="image" class="form-control">
+                               <input class="myInput" type="file" class="form-control">
                             </div>
 
                             <div class="form-group">
