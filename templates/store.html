@@ -30,7 +30,7 @@
   <h5 class="card-cat">{{products.category.name}} </h5>
   
     <h5 class="card-title">{{products.name}} </h5>
-    <p id='price' class="card-text">{{products.price}}{{products|is_in_cart:request.session.cart_add}}  <span>tk</span></p>
+    <p id='price' class="card-text">{{products.price}} <span>tk</span></p>
         
   {% if products|is_in_cart:request.session.cart_add %}
    <div class="card-footer row no-gutters p-0 " >

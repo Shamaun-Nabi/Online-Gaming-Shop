@@ -23,25 +23,27 @@
         </div>
         <h3>Your Personal info</h3>
         
-        <form action="{% url 'showProfile' %}" class="form-horizontal" role="form" method="POST">
+        <form action="{% url 'profile' %}" class="form-horizontal" role="form" method="POST">
         {% csrf_token %}
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input name="fname" class="form-control" type="text" value="{{fname}}">
+               <input name="fname" class="form-control" type="text" value="{{fname}}">
+              {% comment %} <input name="fname" class="form-control" type="text"> {% endcomment %}
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input name="lname" class="form-control" type="text" value="{{lname}}">
+               <input name="lname" class="form-control" type="text" value="{{lname}}"> 
+              {% comment %} <input name="lname" class="form-control" type="text" > {% endcomment %}
             </div>
           </div>
          
           <div class="form-group">
             <label class="col-lg-3 control-label">Add Phone:</label>
             <div class="col-lg-8">
-              <input name="email" class="form-control" type="text" value="Add Your Phone Number">
+              <input name="email" class="form-control" type="text">
             </div>
           </div>
           <div class="form-group">

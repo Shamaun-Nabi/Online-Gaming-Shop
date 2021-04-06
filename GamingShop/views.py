@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views import View
+from django.db import IntegrityError
 
 # Create your views here.
 def index(request):
@@ -126,14 +127,14 @@ def storePage(request):
     if not cart_add:
         request.session['cart_add'] = {}
     # request.session.flush()
-    data="1"
+    # data="1"
     postdata=request.GET
     product= Game.getAllProducts()
     category=Category.category()
     categoryId=postdata.get('category')
     cart=request.POST.get('addCart')
     remove = request.POST.get('remove')
-    cart_add=request.session.get('cart_add')
+    # cart_add=request.session.get('cart_add')
     print(cart_add)
     if cart:
         if cart_add:
@@ -212,34 +213,52 @@ def showProfile(request):
     return render(request,"showProfile.html",customerInfo)
 
 def userProfile(request):
-    loginCustomer_fname=request.session.get('customer_fname')
-    loginCustomer_lname=request.session.get('customer_lname')
-    loginCustomer_email=request.session.get('email')
-    loginCustomer=Customer.get_customer_by_mail(loginCustomer_email)
-    print(loginCustomer)
-    pic=loginCustomer.image
-    customerInfo={
-        'fname':loginCustomer_fname,
-        'lname':loginCustomer_lname,
-        'email':loginCustomer_email,
-        'pic':pic
-    }
+    if request.method=="GET":
+        loginCustomer=request.session.get('email')
+        loginCustomer=Customer.get_customer_by_mail(loginCustomer)
+        f_name=loginCustomer.first_name
+        l_name=loginCustomer.last_name
+        pic=loginCustomer.image
+        customerInfo={
+            'fname':f_name,
+            'lname':l_name,
+            'pic':pic
+        }
+        return render(request,'profile.html',customerInfo)
+    elif request.method=="POST":
+        loginCustomer_fname=request.session.get('customer_fname')
+        loginCustomer_lname=request.session.get('customer_lname')
+        loginCustomer_email=request.session.get('email')
+        loginCustomer=Customer.get_customer_by_mail(loginCustomer_email)
+        pic=loginCustomer.image
+        
         # Update Info:
-    # update_fname=request.POST.get('fname')
-    # update_lname=request.POST.get('lname')
-    # update_email=request.POST.get('email')
-    # loginCustomer.first_name=update_fname
-    # loginCustomer.last_name=update_lname
-    # loginCustomer.email=update_email
-    # loginCustomer.save()
-    # request.session['customer_fname']=loginCustomer.first_name
-    # request.session['customer_lname']=loginCustomer.last_name
-    # request.session['email']=loginCustomer.email
-    print(customerInfo)
-    
-
-    
-
+        update_fname=request.POST.get('fname')
+        update_lname=request.POST.get('lname')
+        
+        f_name=update_fname
+        l_name=update_lname
+      
+        loginCustomer.first_name=f_name
+        print(loginCustomer.first_name)
+        loginCustomer.last_name=l_name
+        request.session['customer_fname']=f_name
+        print( request.session['customer_fname'])
+        request.session['customer_lname']=l_name
+        loginCustomer.save()
+        # update
+        
+        
+        loginCustomer=request.session.get('email')
+        loginCustomer=Customer.get_customer_by_mail(loginCustomer)
+        f_name=loginCustomer.first_name
+        l_name=loginCustomer.last_name
+        pic=loginCustomer.image
+        customerInfo={
+            'fname':f_name,
+            'lname':l_name,
+            'pic':pic
+        }
     return render(request,'profile.html',customerInfo)
 
 
