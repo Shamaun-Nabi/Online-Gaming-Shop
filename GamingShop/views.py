@@ -61,63 +61,63 @@ def signup(request):
             return render(request,'signup.html',data)
     return render(request,'signup.html')
 
-class LoginPage(View):
-    def get(self,request):
-        return render(request,'login.html')
+# class LoginPage(View):
+#     def get(self,request):
+#         return render(request,'login.html')
     
-    def post(self,request):
+#     def post(self,request):
+#         postData=request.POST
+#         email=postData.get('email')
+#         password=postData.get('password')
+#         loginCustomer=Customer.get_customer_by_mail(email)
+#         error_msg=None
+#         if loginCustomer:
+#             flag=check_password(password,loginCustomer.password)
+#             if flag:
+#                 request.session['customer_id']=loginCustomer.id
+#                 print(request.session['customer_id'])
+#                 request.session['customer_fname']=loginCustomer.first_name
+#                 request.session['customer_lname']=loginCustomer.last_name
+#                 request.session['email']=loginCustomer.email
+#                 # print(request.session['email'])
+#                 return redirect('index')
+#             else:
+#                 error_msg="Email or Password Incorrect"
+            
+#         else:
+#             error_msg="Email or Password Incorrect"
+#             print(email,password,loginCustomer)
+#             return render(request,'login.html',{'error':error_msg})
+    
+
+
+def loginPage(request):
+    if request.method=="GET":
+        return render(request,'login.html')
+    else:
         postData=request.POST
         email=postData.get('email')
         password=postData.get('password')
         loginCustomer=Customer.get_customer_by_mail(email)
+       
+      
         error_msg=None
         if loginCustomer:
             flag=check_password(password,loginCustomer.password)
             if flag:
                 request.session['customer_id']=loginCustomer.id
-                print(request.session['customer_id'])
                 request.session['customer_fname']=loginCustomer.first_name
                 request.session['customer_lname']=loginCustomer.last_name
                 request.session['email']=loginCustomer.email
-                # print(request.session['email'])
                 return redirect('index')
             else:
                 error_msg="Email or Password Incorrect"
             
         else:
             error_msg="Email or Password Incorrect"
-            print(email,password,loginCustomer)
-            return render(request,'login.html',{'error':error_msg})
-
-
-# def loginPage(request):
-#     if request.method=="GET":
-        # return render(request,'login.html')
-    # else:
-    #     postData=request.POST
-    #     email=postData.get('email')
-    #     password=postData.get('password')
-    #     loginCustomer=Customer.get_customer_by_mail(email)
-       
-      
-    #     error_msg=None
-    #     if loginCustomer:
-    #         flag=check_password(password,loginCustomer.password)
-    #         if flag:
-    #             request.session['customer_id']=loginCustomer.id
-    #             a=request.session['customer_name']=loginCustomer.first_name
-    #             print(a)
-    #             request.session['email']=loginCustomer.email
-    #             return redirect('index')
-    #         else:
-    #             error_msg="Email or Password Incorrect"
-            
-    #     else:
-    #         error_msg="Email or Password Incorrect"
-    #     print(email,password,loginCustomer)
+        print(email,password,loginCustomer)
         
-    
-    # return render(request,'login.html',{'error':error_msg})
+    return render(request,'login.html',{'error':error_msg})
 
 def contactPage(request):
     return render(request,'contact.html')
@@ -190,7 +190,9 @@ def productDetail(request):
 
 def showProfile(request):
     loginCustomer_fname=request.session.get('customer_fname')
+    print(loginCustomer_fname)
     loginCustomer_lname=request.session.get('customer_lname')
+    print(loginCustomer_lname)
     loginCustomer_email=request.session.get('email')
 
     loginCustomer=Customer.get_customer_by_mail(loginCustomer_email)
@@ -225,6 +227,7 @@ def userProfile(request):
             'pic':pic
         }
         return render(request,'profile.html',customerInfo)
+    
     elif request.method=="POST":
         loginCustomer_fname=request.session.get('customer_fname')
         loginCustomer_lname=request.session.get('customer_lname')
@@ -247,8 +250,6 @@ def userProfile(request):
         request.session['customer_lname']=l_name
         loginCustomer.save()
         # update
-        
-        
         loginCustomer=request.session.get('email')
         loginCustomer=Customer.get_customer_by_mail(loginCustomer)
         f_name=loginCustomer.first_name
