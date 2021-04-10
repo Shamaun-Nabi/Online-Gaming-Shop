@@ -1,8 +1,8 @@
 # Online-Gaming-Shop
 Our first Official Django Project<br>
 
-UI Design With  Adobe XD
-
+UI Design With  Adobe XD <br>
+![GitHub repo size](https://img.shields.io/github/repo-size/Shamaun-Nabi/Online-Gaming-Shop-with-Team)
 
 
 ### Login Form HTML AND CSS done
